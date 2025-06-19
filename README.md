@@ -1,9 +1,18 @@
-# Pterodactyl Web Egg
+🐣 Egg Web de Pterodactyl – NexoHost
+📦 ¿Qué es?
+Este egg permite desplegar sitios web fácilmente con soporte para PHP + Nginx, WordPress (opcional) y Composer. Ideal para proyectos personales, tiendas online o entornos de prueba.
 
-### How to Use:
-1. Download the JSON file from the releases page.
-2. Import the egg into your Pterodactyl panel.
-3. Create a new server. Optionally, enable WordPress during setup for automatic installation.
-4. You can also install Composer packages, either during the initial setup or afterward.
-5. Visit the provided IP and port to access the server. For WordPress, go to `http://ip:port/wp-admin`.
-6. To use a custom domain, create a reverse proxy on the host.
+⚙️ Cómo usarlo:
+Descarga el archivo .json desde la sección Releases.
+
+Importa el egg en tu panel de Pterodactyl como administrador.
+
+Crea un nuevo servidor usando este egg.
+
+(Opcional) Activa la opción WordPress durante la configuración para que se instale automáticamente.
+
+Puedes instalar paquetes de Composer al iniciar el servidor o en cualquier momento posterior.
+
+Una vez iniciado, accede al sitio desde la IP y puerto asignado:
+
+WordPress: http://IP:PUERTO/wp-admin
