@@ -1,15 +1,31 @@
 FROM alpine:latest
 
-RUN apk --update --no-cache add curl ca-certificates nginx
-RUN apk add php8 php8-xml php8-exif php8-fpm php8-session php8-soap php8-openssl php8-gmp php8-pdo_odbc php8-json php8-dom php8-pdo php8-zip php8-mysqli php8-sqlite3 php8-pdo_pgsql php8-bcmath php8-gd php8-odbc php8-pdo_mysql php8-pdo_sqlite php8-gettext php8-xmlreader php8-bz2 php8-iconv php8-pdo_dblib php8-curl php8-ctype php8-phar php8-fileinfo php8-mbstring php8-tokenizer php8-simplexml
-COPY --from=composer:latest  /usr/bin/composer /usr/bin/composer
+# Habilitar comunidad y actualizar
+RUN echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
+    && echo "@edge http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
+    && apk update
 
+# Instalar NGINX y PHP 8.4 + extensiones necesarias
+RUN apk add --no-cache curl ca-certificates nginx \
+    php8.4@edge php8.4-xml@edge php8.4-exif@edge php8.4-fpm@edge php8.4-session@edge php8.4-soap@edge \
+    php8.4-openssl@edge php8.4-gmp@edge php8.4-pdo_odbc@edge php8.4-json@edge php8.4-dom@edge \
+    php8.4-pdo@edge php8.4-zip@edge php8.4-mysqli@edge php8.4-sqlite3@edge php8.4-pdo_pgsql@edge \
+    php8.4-bcmath@edge php8.4-gd@edge php8.4-odbc@edge php8.4-pdo_mysql@edge php8.4-pdo_sqlite@edge \
+    php8.4-gettext@edge php8.4-xmlreader@edge php8.4-bz2@edge php8.4-iconv@edge php8.4-pdo_dblib@edge \
+    php8.4-curl@edge php8.4-ctype@edge php8.4-phar@edge php8.4-fileinfo@edge php8.4-mbstring@edge \
+    php8.4-tokenizer@edge php8.4-simplexml@edge
+
+# Instalar Composer desde imagen oficial
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Configurar entorno de ejecución
 USER container
-ENV  USER container
+ENV USER container
 ENV HOME /home/container
-
 WORKDIR /home/container
+
+# Copiar entrypoint
 COPY ./entrypoint.sh /entrypoint.sh
 
-
+# Comando de arranque
 CMD ["/bin/ash", "/entrypoint.sh"]
