@@ -8,101 +8,96 @@ $phpVersion = phpversion();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Version Info</title>
+    <title>NexoHost | Servidor Web Activo</title>
     <style>
+        :root {
+            --primary-color: #1e90ff;
+            --secondary-color: #0c0f14;
+            --accent-color: #28a745;
+            --text-color: #f0f0f0;
+            --bg-color: #121212;
+            --card-color: #1f1f1f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7fc;
-            color: #333;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
+            padding: 20px;
         }
 
-        .container {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .card {
+            background-color: var(--card-color);
+            border-radius: 15px;
             padding: 40px;
-            text-align: center;
-            width: 80%;
             max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        h1 {
-            font-size: 2.5em;
-            color: #2c3e50;
+        .card h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
             margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 1.2em;
-            color: #34495e;
-            margin-bottom: 30px;
         }
 
         .php-version {
-            background-color: #2980b9;
+            background: var(--primary-color);
             color: white;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 1.5em;
-            margin-bottom: 20px;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 1.4rem;
+            margin: 20px 0;
         }
 
         .message {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #27ae60;
-            margin-bottom: 30px;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
         }
 
         .webroot-message {
-            font-size: 1.2em;
+            color: #f39c12;
             font-weight: bold;
-            color: #e67e22;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .footer {
-            font-size: 1em;
-            color: #7f8c8d;
+            color: #999;
+            font-size: 0.95rem;
         }
 
         .footer a {
-            color: #2980b9;
+            color: var(--primary-color);
             text-decoration: none;
         }
 
         .footer a:hover {
             text-decoration: underline;
         }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-            h1 {
-                font-size: 2em;
-            }
-            p {
-                font-size: 1em;
-            }
-        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Webserver Correctly Installed</h1>
-    <p>Your current PHP version is:</p>
-    <div class="php-version"><?php echo $phpVersion; ?></div>
-    <div class="message">Webserver correctly installed and running!</div>
-    <div class="webroot-message">You can now place your website files in the webroot folder</div>
+<div class="card">
+    <h1>🚀 Servidor Web en Marcha</h1>
+    <p>Versión PHP actual:</p>
+    <div class="php-version">PHP <?php echo $phpVersion; ?></div>
+    <div class="message">✅ Todo se ha configurado correctamente.</div>
+    <div class="webroot-message">📂 Coloca los archivos de tu web en la carpeta <strong>webroot</strong></div>
     <div class="footer">
-        <p>Powered by <a href="https://sigmaprods.dev" target="_blank">sigmaprods.dev</a></p>
+        <p>Potenciado por <a href="https://nexohost.es" target="_blank">NexoHost.es</a></p>
     </div>
 </div>
 
