@@ -1,4 +1,4 @@
-# Pterodactyl Webhost Egg
+# Pterodactyl Web Egg
 
 ### How to Use:
 1. Download the JSON file from the releases page.
