@@ -1,9 +1,21 @@
+                         Licencia Pública de NexoHost v1.0
 
-                                The Sigma Public License 1.2
+                        Copyright (c) 2022 - 2025 NexoHost
 
-                                   Copyright (c) 2023 - 2025 Sigma
+Se permite a cualquier persona **copiar, clonar o modificar** este repositorio con fines **educativos o personales**.  
+No se permite su uso con fines **comerciales**, **reventa** o **rebranding** sin autorización expresa de NexoHost.
 
-     Everyone is permitted to fork, copy, or make modifications to the original repo, but you can't modify
-     it for commercial use, such as changing the name to make it your own. You can only add on to
-     this repository or making an unmodified copy for archival reasons. If caught breaking this license,
-     the original repository owners have full rights to request a takedown and you are expected to comply.
+✅ Está permitido:
+- Clonar o hacer fork del repositorio.
+- Modificarlo para uso personal o interno.
+- Compartir mejoras públicamente siempre que se mantenga el crédito original.
+
+🚫 No está permitido:
+- Cambiar el nombre del proyecto para hacerlo pasar como propio.
+- Vender este código, modificado o no.
+- Usarlo como base para productos comerciales sin permiso.
+
+En caso de incumplimiento, NexoHost se reserva el derecho de solicitar **takedown** (retirada del contenido) y tomar las medidas legales correspondientes.  
+Al utilizar o distribuir este código, aceptas los términos de esta licencia.
+
+                      — NexoHost Corporation — www.nexohost.es
