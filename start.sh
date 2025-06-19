@@ -8,10 +8,9 @@ CYAN="\033[1;36m"
 RESET="\033[0m"
 BOLD="\033[1m"
 
-# Banner
+# Mostrar banner limpio
 echo "${CYAN}============================================================"
-echo "${BOLD}${CYAN}      🚀 Welcome to NexoHost.es 🚀        ${RESET}${CYAN}"
-echo "         🚀 Bienvenido a NexoHost.es        "
+echo "${BOLD}${CYAN}         🚀  Bienvenido a la plataforma de NexoHost.es       ${RESET}${CYAN}"
 echo "============================================================${RESET}"
 
 # Funciones de log
@@ -33,32 +32,32 @@ log_info() {
 
 # Procesos
 
-log_info "Cleaning temp files... | Eliminando archivos temporales..."
+log_info "Eliminando archivos temporales..."
 if rm -rf /home/container/tmp/*; then
-    log_success "Temp files cleaned. | Archivos temporales eliminados."
+    log_success "Archivos temporales eliminados correctamente."
 else
-    log_error "Temp cleanup failed. | Error al eliminar temporales."
+    log_error "Error al eliminar archivos temporales."
     exit 1
 fi
 
-log_info "Starting PHP-FPM... | Iniciando PHP-FPM..."
+log_info "Iniciando PHP-FPM..."
 if /usr/sbin/php-fpm8 --fpm-config /home/container/php-fpm/php-fpm.conf --daemonize; then
-    log_success "PHP-FPM started. | PHP-FPM iniciado."
+    log_success "PHP-FPM iniciado correctamente."
 else
-    log_error "PHP-FPM failed. | Error al iniciar PHP-FPM."
+    log_error "Fallo al iniciar PHP-FPM."
     exit 1
 fi
 
-log_info "Starting Nginx... | Iniciando Nginx..."
+log_info "Iniciando Nginx..."
 if /usr/sbin/nginx -c /home/container/nginx/nginx.conf -p /home/container/; then
-    log_success "Nginx running. | Nginx en ejecución."
+    log_success "Servidor web en funcionamiento correctamente."
 else
-    log_error "Nginx failed. | Error al iniciar Nginx."
+    log_error "Fallo al iniciar Nginx."
     exit 1
 fi
 
 echo "${CYAN}============================================================${RESET}"
-log_success "All services started. | Todos los servicios iniciados."
+log_success "Todos los servicios fueron iniciados correctamente. 🚀"
 echo "${CYAN}============================================================${RESET}"
 
 # Mantener contenedor en ejecución
