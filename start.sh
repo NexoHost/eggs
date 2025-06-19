@@ -1,70 +1,65 @@
 #!/bin/ash
 
-# Colors for output
-GREEN="\033[1;92m"
-YELLOW="\033[1;93m"
-RED="\033[1;91m"
-CYAN="\033[1;96m"
+# Colores
+GREEN="\033[1;32m"
+YELLOW="\033[1;33m"
+RED="\033[1;31m"
+CYAN="\033[1;36m"
 RESET="\033[0m"
 BOLD="\033[1m"
 
-# Banner NexoHost.es
-echo "${CYAN}╔════════════════════════════════════════════════════════════╗"
-echo "║             ${BOLD}🚀  Bienvenido a NexoHost.es  🚀${CYAN}             ║"
-echo "╚════════════════════════════════════════════════════════════╝${RESET}"
+# Banner
+echo "${CYAN}============================================================"
+echo "${BOLD}${CYAN}      🚀 Welcome to NexoHost.es 🚀        ${RESET}${CYAN}"
+echo "         🚀 Bienvenido a NexoHost.es        "
+echo "============================================================${RESET}"
 
-# Function to print messages with colors and visual border
+# Funciones de log
 log_success() {
-    echo -e "${GREEN}║ [✔] $1${RESET}"
+    echo -e "${GREEN}[✔] $1${RESET}"
 }
 
 log_warning() {
-    echo -e "${YELLOW}║ [!] $1${RESET}"
+    echo -e "${YELLOW}[!] $1${RESET}"
 }
 
 log_error() {
-    echo -e "${RED}║ [✖] $1${RESET}"
+    echo -e "${RED}[✖] $1${RESET}"
 }
 
 log_info() {
-    echo -e "${CYAN}║ [⏳] $1${RESET}"
+    echo -e "${CYAN}[⏳] $1${RESET}"
 }
 
-# Frame top
-echo "${CYAN}╔════════════════════════════════════════════════════════════╗${RESET}"
+# Procesos
 
-# Clean up temp directory
-log_info "Cleaning up temporary files..."
+log_info "Cleaning temp files... | Eliminando archivos temporales..."
 if rm -rf /home/container/tmp/*; then
-    log_success "Temporary files removed successfully."
+    log_success "Temp files cleaned. | Archivos temporales eliminados."
 else
-    log_error "Failed to remove temporary files."
-    echo "${CYAN}╚════════════════════════════════════════════════════════════╝${RESET}"
+    log_error "Temp cleanup failed. | Error al eliminar temporales."
     exit 1
 fi
 
-# Start PHP-FPM
-log_info "Starting PHP-FPM..."
+log_info "Starting PHP-FPM... | Iniciando PHP-FPM..."
 if /usr/sbin/php-fpm8 --fpm-config /home/container/php-fpm/php-fpm.conf --daemonize; then
-    log_success "PHP-FPM started successfully."
+    log_success "PHP-FPM started. | PHP-FPM iniciado."
 else
-    log_error "Failed to start PHP-FPM."
-    echo "${CYAN}╚════════════════════════════════════════════════════════════╝${RESET}"
+    log_error "PHP-FPM failed. | Error al iniciar PHP-FPM."
     exit 1
 fi
 
-# Start NGINX
-log_info "Starting Nginx..."
+log_info "Starting Nginx... | Iniciando Nginx..."
 if /usr/sbin/nginx -c /home/container/nginx/nginx.conf -p /home/container/; then
-    log_success "Web server is running. All services started successfully."
+    log_success "Nginx running. | Nginx en ejecución."
 else
-    log_error "Failed to start Nginx."
-    echo "${CYAN}╚════════════════════════════════════════════════════════════╝${RESET}"
+    log_error "Nginx failed. | Error al iniciar Nginx."
     exit 1
 fi
 
-# Frame bottom
-echo "${CYAN}╚════════════════════════════════════════════════════════════╝${RESET}"
+echo "${CYAN}============================================================${RESET}"
+log_success "All services started. | Todos los servicios iniciados."
+echo "${CYAN}============================================================${RESET}"
 
-# Keep the container running
+# Mantener contenedor en ejecución
 tail -f /dev/null
