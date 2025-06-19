@@ -8,10 +8,10 @@ CYAN="\033[1;36m"
 RESET="\033[0m"
 BOLD="\033[1m"
 
-# Mostrar banner limpio
-echo "${CYAN}============================================================"
-echo "${BOLD}${CYAN}         🚀  Bienvenido a la plataforma de NexoHost.es       ${RESET}${CYAN}"
-echo "============================================================${RESET}"
+# Mostrar banner limpio con interpretación de colores
+echo -e "${CYAN}============================================================"
+echo -e "${BOLD}${CYAN}         🚀  Bienvenido a la plataforma de NexoHost.es       ${RESET}${CYAN}"
+echo -e "============================================================${RESET}"
 
 # Funciones de log
 log_success() {
@@ -56,9 +56,9 @@ else
     exit 1
 fi
 
-echo "${CYAN}============================================================${RESET}"
+echo -e "${CYAN}============================================================${RESET}"
 log_success "Todos los servicios fueron iniciados correctamente. 🚀"
-echo "${CYAN}============================================================${RESET}"
+echo -e "${CYAN}============================================================${RESET}"
 
 # Mantener contenedor en ejecución
-tail -f /dev/null asi me  lo diste
+tail -f /dev/null
